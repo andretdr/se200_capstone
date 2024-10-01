@@ -3,17 +3,30 @@ import { PoliciesTable } from "@/components/policies-table";
 import Link from "next/link";
 import { db } from '@/db';
 
-export default async function Page() {
-  const policyItems = await db.insurance_policies.findMany();
-  
+
+export async function fetchPage(offset: number) {
+  const policyItems = await db.insurance_policies.findMany({
+        skip: offset,
+        take: 5,
+      });
+  return {
+    page: policyItems,
+    newOffset: offset + 5,
+  };
+}
+
+
+export default async function Page({ searchParams }) {
+  const offset = searchParams.offset ?? 0;
+  const { page, newOffset } = await fetchPage(
+    Number(offset)
+  );
   return (
     <main className="lg:container">
       <div className="bg-white h-96 rounded-lg">
 
         <section className="">
-          <PoliciesTable policies={policyItems} />
-
-
+          <PoliciesTable policies={page} offset={newOffset} />
 
 
         </section>
@@ -21,6 +34,37 @@ export default async function Page() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+// export default async function Page() {
+//   const policyItems = await db.insurance_policies.findMany({
+//     skip: offset,
+//     take: 5,
+//   });
+
+
+//   return (
+//     <main className="lg:container">
+//       <div className="bg-white h-96 rounded-lg">
+
+//         <section className="">
+//           <PoliciesTable policies={policyItems} />
+
+
+//         </section>
+//       </div>
+//     </main>
+//   );
+// }
 
 
 
