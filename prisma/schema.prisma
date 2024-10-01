@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,9 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           Int     @id @default(autoincrement())
-  name         String
-  email        String
-  password     String
+model insurance_policies {
+  policy_id          String               @id @db.VarChar(10)
+  policy_name        String               @db.VarChar(255)
+  base_price         Decimal              @db.Decimal(10, 2)
+  holder_to_policies holder_to_policies[]
+  policy_to_types    policy_to_types[]
+}
+
+model policy_types {
+  id              Int               @id @default(autoincrement())
+  policy_type     String            @db.VarChar(50)
+  policy_to_types policy_to_types[]
+}
+
+model policy_holders {
+  holder_id          String               @id @db.VarChar(10)
+  holder_email       String               @unique @db.VarChar(255)
+  holder_first_name  String               @db.VarChar(50)
+  holder_last_name   String               @db.VarChar(50)
+  holder_to_policies holder_to_policies[]
+}
+
+model holder_to_policies {
+  holder_id          String             @db.VarChar(10)
+  policy_id          String             @db.VarChar(10)
+  policy_holders     policy_holders     @relation(fields: [holder_id], references: [holder_id], onDelete: NoAction, onUpdate: NoAction)
+  insurance_policies insurance_policies @relation(fields: [policy_id], references: [policy_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([holder_id, policy_id])
+}
+
+model policy_to_types {
+  policy_id          String             @db.VarChar(10)
+  type_id            Int
+  insurance_policies insurance_policies @relation(fields: [policy_id], references: [policy_id], onDelete: NoAction, onUpdate: NoAction)
+  policy_types       policy_types       @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([policy_id, type_id])
 }
