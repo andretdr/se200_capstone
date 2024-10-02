@@ -1,7 +1,7 @@
 'use client'
 
 import { Check, ChevronsUpDown } from 'lucide-react';
-import addPolicy from './add-policy';
+import addCustomer from './add-customer';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -41,6 +41,7 @@ import {
 } from "@/components/ui/popover"
 
 import { Input } from "@/components/ui/input"
+import { Decimal } from '@prisma/client/runtime/library';
 
 
 const schema = z.object({
@@ -52,49 +53,49 @@ const schema = z.object({
 });
 
 
-type PolicyTypes = {data:{id:number, policy_type:string}[]};
+type Policies = {data:{policy_id:string, policy_name:string, base_price:Decimal}[]};
 
-export default function AddPolicyPage(policyTypes: PolicyTypes) {
+export default function AddCustomerPage(policies: Policies) {
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
       id: '',
-      name: '',
-      price: '',
-      type: '',
+      email: '',
+      first_name: '',
+      last_name: '',
+      policies: ''
     }
   });
   
   const handleRegistration = async (formData) => {
-    const typeString = formData.type;
-    let typeID = 0;
+    // const typeString = formData.type;
+    // let typeID = 0;
 
-    for (let item of policyTypes.data){
-        if (item.policy_type === typeString)
-            typeID = item.id;
-    }
+    // for (let item of policyTypes.data){
+    //     if (item.policy_type === typeString)
+    //         typeID = item.id;
+    // }
 
-    const newData = {
-        id: formData.id,
-        name: formData.name,
-        price: formData.price,
-        type: typeID
-    }
-    try {
-      await addPolicy(newData);
-    } catch (error) {
-      console.error('Error creating user:', error)
-    }
+    // const newData = {
+    //     id: formData.id,
+    //     name: formData.name,
+    //     price: formData.price,
+    //     type: typeID
+    // }
+    // try {
+    //   await addPolicy(newData);
+    // } catch (error) {
+    //   console.error('Error creating user:', error)
+    // }
 
   };
   
   return (
    <div className="sm:container">
 
-        {/* <GetPolicyType /> */}
         <Card className='w-2/4 h-fit mx-auto'>
         <CardHeader>
-            <CardTitle>Add Policy</CardTitle>
+            <CardTitle>Add Customer</CardTitle>
             <CardDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est facilis quo aliquam!</CardDescription>
         </CardHeader>
         <CardContent>
@@ -109,7 +110,7 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
                 <div className='grid grid-cols-3 gap-4'>
                     <FormLabel className='my-2'>ID</FormLabel>
                     <FormControl className='col-span-2'>
-                        <Input placeholder="20A123" {...field} />
+                        <Input placeholder="PH123" {...field} />
                     </FormControl>
                 </div>
                 <FormDescription>
@@ -122,13 +123,13 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
           />
           <FormField
             control={form.control}
-            name="name"
+            name="email"
             render={({ field }) => (
               <FormItem>
                 <div className='grid grid-cols-3 gap-4'>
-                    <FormLabel className='my-2'>Name</FormLabel>
+                    <FormLabel className='my-2'>Email</FormLabel>
                     <FormControl className='col-span-2'>
-                    <Input placeholder="Easy Health" {...field} />
+                    <Input type='email' placeholder="john@rocketmail.com" {...field} />
                     </FormControl>
                 </div>
                 <FormDescription>
@@ -142,13 +143,13 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
           />
           <FormField
             control={form.control}
-            name="price"
+            name="first_name"
             render={({ field }) => (
               <FormItem>
                 <div className='grid grid-cols-3 gap-4'>
-                    <FormLabel className='my-2'>Price</FormLabel>
+                    <FormLabel className='my-2'>First Name</FormLabel>
                     <FormControl className='col-span-2'>
-                    <Input placeholder='$30.00' {...field} />
+                    <Input placeholder='John' {...field} />
                     </FormControl>
                 </div>
                 <FormDescription>
@@ -160,13 +161,34 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="last_name"
+            render={({ field }) => (
+              <FormItem>
+                <div className='grid grid-cols-3 gap-4'>
+                    <FormLabel className='my-2'>Last Name</FormLabel>
+                    <FormControl className='col-span-2'>
+                    <Input placeholder='Smith' {...field} />
+                    </FormControl>
+                </div>
+                <FormDescription>
+
+                </FormDescription>
+                <div className='grid grid-cols-3 gap-4 min-h-8'>
+                    <FormMessage className='col-start-2 col-span-2 my-0'/>
+                </div>
+              </FormItem>
+            )}
+          />
+
             <FormField
             control={form.control}
-            name="type"
+            name="policies"
             render={({ field }) => (
                 <FormItem className="flex flex-col">
                 <div className='grid grid-cols-3 gap-4'>               
-                <FormLabel className='my-2'>Policy Type</FormLabel>
+                <FormLabel className='my-2'>Policies</FormLabel>
                 <Popover>
                     <PopoverTrigger asChild>
                     <FormControl>
@@ -179,37 +201,37 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
                         )}
                         >
                         {field.value
-                            ? policyTypes.data.find(
-                                (type) => type.policy_type === field.value
-                            )?.policy_type
-                            : "Select Policy Type"}
+                            ? policies.data.find(
+                                (item) => item.policy_name === field.value
+                            )?.policy_name
+                            : "Select Policy"}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
                     </FormControl>
                     </PopoverTrigger>
                     <PopoverContent className="w-[200px] p-0">
                     <Command>
-                        <CommandInput placeholder="Search types..." />
+                        <CommandInput placeholder="Search policy..." />
                         <CommandList>
-                        <CommandEmpty>No types found.</CommandEmpty>
+                        <CommandEmpty>No policy found.</CommandEmpty>
                         <CommandGroup>
-                            {policyTypes.data.map((type) => (
+                            {policies.data.map((item) => (
                             <CommandItem
-                                value={type.policy_type}
-                                key={type.policy_type}
+                                value={item.policy_name}
+                                key={item.policy_name}
                                 onSelect={() => {
-                                form.setValue("type", type.policy_type)
+                                form.setValue("policies", item.policy_name)
                                 }}
                             >
                                 <Check
                                 className={cn(
                                     "mr-2 h-4 w-4",
-                                    type.policy_type === field.value
+                                    item.policy_name === field.value
                                     ? "opacity-100"
                                     : "opacity-0"
                                 )}
                                 />
-                                {type.policy_type}
+                                {item.policy_name}
                             </CommandItem>
                             ))}
                         </CommandGroup>

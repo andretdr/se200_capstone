@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 
-export default async function addPolicy(formData: {
+export default async function addCustomer(formData: {
   id: string,
   name: string,
   price: number,
