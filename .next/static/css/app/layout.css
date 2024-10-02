@@ -620,9 +620,6 @@ video {
 .mb-12 {
   margin-bottom: 3rem;
 }
-.mb-4 {
-  margin-bottom: 1rem;
-}
 .me-6 {
   margin-inline-end: 1.5rem;
 }
@@ -910,10 +907,6 @@ video {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.px-52 {
-  padding-left: 13rem;
-  padding-right: 13rem;
-}
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -933,10 +926,6 @@ video {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 .pl-8 {
   padding-left: 2rem;
@@ -971,13 +960,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-.font-bold {
-  font-weight: 700;
 }
 .font-medium {
   font-weight: 500;
