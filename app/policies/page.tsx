@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { PoliciesTable } from "@/components/policies-table";
+import { getPolicies } from "@prisma/client/sql"
 import Link from "next/link";
 import { db } from '@/db';
 
 
 export async function fetchPage(offset: number) {
-  let policyItems = await db.insurance_policies.findMany();
+  //let policyItems = await db.insurance_policies.findMany();
+  let policyItems = await db.$queryRawTyped(getPolicies());
+
   const totalCount = policyItems.length;
 
   policyItems = policyItems.slice(offset, offset + 5)
