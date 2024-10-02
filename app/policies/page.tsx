@@ -6,7 +6,6 @@ import { db } from '@/db';
 
 
 export async function fetchPage(offset: number) {
-  //let policyItems = await db.insurance_policies.findMany();
   let policyItems = await db.$queryRawTyped(getPolicies());
 
   const totalCount = policyItems.length;

@@ -7,7 +7,7 @@ export function Customers({ customers }) {
       <TableCell>{customers.holder_email}</TableCell>
       <TableCell>{customers.holder_first_name}</TableCell>
       <TableCell>{customers.holder_last_name}</TableCell>
-      <TableCell>{}</TableCell>
+      <TableCell>{customers.policy_names}</TableCell>
     </TableRow>
   );
 }
