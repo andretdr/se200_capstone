@@ -5,20 +5,21 @@ import { db } from '@/db';
 
 
 export async function fetchPage(offset: number) {
-  const policyItems = await db.insurance_policies.findMany({
-        skip: offset,
-        take: 5,
-      });
+  let policyItems = await db.insurance_policies.findMany();
+  const totalCount = policyItems.length;
+
+  policyItems = policyItems.slice(offset, offset + 5)
   return {
     page: policyItems,
     newOffset: offset + 5,
+    totalCount: totalCount
   };
 }
 
 
 export default async function Page({ searchParams }) {
   const offset = searchParams.offset ?? 0;
-  const { page, newOffset } = await fetchPage(
+  const { page, newOffset, totalCount } = await fetchPage(
     Number(offset)
   );
   return (
@@ -26,7 +27,7 @@ export default async function Page({ searchParams }) {
       <div className="bg-white h-96 rounded-lg">
 
         <section className="">
-          <PoliciesTable policies={page} offset={newOffset} />
+          <PoliciesTable policies={page} offset={newOffset} totalcount={totalCount}/>
 
 
         </section>

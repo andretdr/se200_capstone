@@ -23,14 +23,16 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 export function CustomersTable({
   customers,
   offset,
+  totalcount,
 }: {
   customers: any[];
   offset: number;
+  totalcount: number;
 }) 
 {
   let router = useRouter();
   let postsPerPage = 5;
-  let totalPosts = 100;
+  let totalPosts = totalcount;
 
   function prevPage() {
     router.back();
@@ -92,7 +94,7 @@ export function CustomersTable({
               variant="ghost"
               size="sm"
               type="submit"
-              disabled={offset + postsPerPage > totalPosts}
+              disabled={offset >= totalPosts}
             >
               Next
               <ChevronRight className="ml-2 h-4 w-4" />

@@ -23,14 +23,16 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 export function PoliciesTable({
   policies,
   offset,
+  totalcount
 }: {
   policies: any[];
   offset: number;
+  totalcount: number;
 }) 
 {
   let router = useRouter();
   let postsPerPage = 5;
-  let totalPosts = 100;
+  let totalPosts = totalcount;
 
   function prevPage() {
     router.back();
@@ -91,7 +93,8 @@ export function PoliciesTable({
               variant="ghost"
               size="sm"
               type="submit"
-              disabled={offset + postsPerPage > totalPosts}
+              
+              disabled={offset >= totalPosts}
             >
               Next
               <ChevronRight className="ml-2 h-4 w-4" />
