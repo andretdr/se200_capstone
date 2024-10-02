@@ -25,7 +25,16 @@ export default async function Page({ searchParams }) {
     Number(offset)
   );
   return (
+      
+
     <main className="lg:container">
+
+    <section >
+          <Button className="my-8">
+          <Link href='/policies/addpolicy' className="hover:underline">+ Add Policy</Link>
+          </Button>
+    </section>
+
       <div className="bg-white h-96 rounded-lg">
 
         <section className="">
