@@ -47,7 +47,7 @@ const schema = z.object({
   id: z.string().min(3, "ID must be at least 3 characters").max(12, "ID cannot exceed 12 characters"),
   name: z.string().min(3, "Name must be at least 3 characters").max(30, "Name cannot exceed 30 characters"),
   
-  price: z.number(),
+  price: z.coerce.number().gt(0),
   type: z.string().min(1, "Please select a policy type"),
 });
 
@@ -65,13 +65,29 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
     }
   });
   
-  const handleRegistration = async (data) => {
-    try {
-      console.log(data);
-      await addPolicy(data);
-    } catch (error) {
-      console.error('Error creating user:', error)
+  const handleRegistration = async (formData) => {
+    const typeString = formData.type;
+    let typeID = 0;
+
+    for (let item of policyTypes.data){
+        if (item.policy_type === typeString)
+            typeID = item.id;
     }
+
+    const newData = {
+        id: formData.id,
+        name: formData.name,
+        price: formData.price,
+        type: typeID
+    }
+
+    console.log(newData);
+
+    // try {
+    //   await addPolicy(data);
+    // } catch (error) {
+    //   console.error('Error creating user:', error)
+    // }
   };
   
   return (
@@ -146,7 +162,6 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
               </FormItem>
             )}
           />
-            {/* {getPolicyType()} */}
             <FormField
             control={form.control}
             name="type"

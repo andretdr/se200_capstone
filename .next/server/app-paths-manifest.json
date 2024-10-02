@@ -1,6 +1,5 @@
 {
-  "/policies/addpolicy/page": "app/policies/addpolicy/page.js",
   "/customers/test/page": "app/customers/test/page.js",
-  "/customers/page": "app/customers/page.js",
+  "/policies/addpolicy/page": "app/policies/addpolicy/page.js",
   "/policies/page": "app/policies/page.js"
 }

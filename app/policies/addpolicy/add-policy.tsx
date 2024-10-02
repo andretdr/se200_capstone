@@ -17,7 +17,7 @@ export default async function addPolicy(formData: {
       base_price: formData.price,
     }
   });
-  console.log(user);
+
 
   redirect('/');
 }
