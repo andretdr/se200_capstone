@@ -35,7 +35,7 @@ export default async function Page({ searchParams }) {
           </Button>
     </section>
 
-      <div className="bg-white h-96 rounded-lg">
+      <div className="bg-white h-96 rounded-lg shadow-xl">
 
         <section className="">
           <PoliciesTable policies={page} offset={newOffset} totalcount={totalCount}/>

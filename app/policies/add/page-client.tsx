@@ -90,7 +90,7 @@ export default function AddPolicyPage(policyTypes: PolicyTypes) {
    <div className="sm:container">
 
         {/* <GetPolicyType /> */}
-        <Card className='w-2/4 h-fit mt-20 mx-auto'>
+        <Card className='w-2/4 h-fit mt-20 mx-auto shadow-xl'>
         <CardHeader>
             <CardTitle>Add Policy</CardTitle>
             <CardDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est facilis quo aliquam!</CardDescription>

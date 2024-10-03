@@ -90,7 +90,7 @@ export default function AddCustomerPage(policies: Policies) {
   return (
    <div className="sm:container">
 
-        <Card className='w-2/4 h-fit mx-auto mt-20'>
+        <Card className='w-2/4 h-fit mx-auto mt-20 shadow-xl'>
         <CardHeader>
             <CardTitle>Add Customer</CardTitle>
             <CardDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est facilis quo aliquam!</CardDescription>
