@@ -11,7 +11,7 @@ datasource db {
 
 model insurance_policies {
   policy_id          String               @id @db.VarChar(10)
-  policy_name        String               @db.VarChar(255)
+  policy_name        String               @unique @db.VarChar(255)
   base_price         Decimal              @db.Decimal(10, 2)
   holder_to_policies holder_to_policies[]
   policy_to_types    policy_to_types[]

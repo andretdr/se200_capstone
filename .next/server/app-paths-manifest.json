@@ -1,5 +1,7 @@
 {
+  "/customers/add/page": "app/customers/add/page.js",
   "/page": "app/page.js",
   "/customers/page": "app/customers/page.js",
-  "/customers/addcustomers/page": "app/customers/addcustomers/page.js"
+  "/policies/page": "app/policies/page.js",
+  "/policies/add/page": "app/policies/add/page.js"
 }

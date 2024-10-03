@@ -1,8 +1,8 @@
 // File: E:\myPrograms\course_heicoders\se200\se200_capstoneProject\app\customers\addcustomers\page.tsx
-import * as entry from '../../../../../app/customers/addcustomers/page.js'
+import * as entry from '../../../../../app/customers/add/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../../app/customers/addcustomers/page.js')
+type TEntry = typeof import('../../../../../app/customers/add/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{

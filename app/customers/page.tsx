@@ -25,6 +25,13 @@ export default async function Page({ searchParams }) {
   );
   return (
     <main className="lg:container">
+
+      <section >
+            <Button className="my-8">
+            <Link href='/customers/add' className="hover:underline">+ Add Customers</Link>
+            </Button>
+      </section>
+
       <div className="bg-white h-96 rounded-lg">
 
         <section className="">

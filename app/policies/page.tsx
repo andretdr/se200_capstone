@@ -31,7 +31,7 @@ export default async function Page({ searchParams }) {
 
     <section >
           <Button className="my-8">
-          <Link href='/policies/addpolicy' className="hover:underline">+ Add Policy</Link>
+          <Link href='/policies/add' className="hover:underline">+ Add Policy</Link>
           </Button>
     </section>
 
@@ -46,37 +46,3 @@ export default async function Page({ searchParams }) {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-// export default async function Page() {
-//   const policyItems = await db.insurance_policies.findMany({
-//     skip: offset,
-//     take: 5,
-//   });
-
-
-//   return (
-//     <main className="lg:container">
-//       <div className="bg-white h-96 rounded-lg">
-
-//         <section className="">
-//           <PoliciesTable policies={policyItems} />
-
-
-//         </section>
-//       </div>
-//     </main>
-//   );
-// }
-
-
-
