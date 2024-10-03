@@ -1,25 +1,28 @@
-# Welcome to Next.js
+# Introduction
+Capstone SE200 is the capstone project for heicoders SE200 course.
 
-This is the most minimal starter for your Next.js project.
+## Development
+The app is created using tech and libraries such as   
+- NextJS   
+- TypeScript   
+- Tailwind CSS   
+- Shadcn   
+- Zod   
+- Prisma   
+- Postgres SQL   
+- Dbeaver   
 
-## Deploy your own
+## Feature List
+Simple interactive UI hovers, tooltips, drop-down menus and tables are implemented using Tailwind and Shadcn
+![{AC098CD8-19F6-456B-8496-F72E65D64C58}](https://github.com/user-attachments/assets/ebbf4980-b873-4673-bbf8-edc8ae66d301)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/hello-world&project-name=hello-world&repository-name=hello-world)
+The app allows a user to view policy and customer records and manages pagination for the entries   
+![{8FD4DB22-0132-4C4B-B260-8F78DF29346A}](https://github.com/user-attachments/assets/b48f15b1-d9a3-444a-839c-6c1286f3c72a)
 
-## How to use
+It allows the user to add policies and customers and does client side validation using Zod   
+![{96281D5D-EC1A-425B-AD02-4A95211ED8D4}](https://github.com/user-attachments/assets/38b8546b-7b5b-40c2-9e3f-1e79593663f7)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+Read and write on the entries are managed by Prisma and implemented on a Postgres database
 
-```bash
-npx create-next-app --example hello-world hello-world-app
-```
-
-```bash
-yarn create next-app --example hello-world hello-world-app
-```
-
-```bash
-pnpm create next-app --example hello-world hello-world-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## TO DOs
+Due to time constrains, I was unable to fully implement an authentication and dashboard feature. Would love to try and take a pass at this when I can
