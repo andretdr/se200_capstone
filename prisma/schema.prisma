@@ -1,7 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  directUrl = env("DIRECT_URL")
+  provider        = "prisma-client-js"
   previewFeatures = ["typedSql"]
+  directUrl       = "(function)"
 }
 
 datasource db {

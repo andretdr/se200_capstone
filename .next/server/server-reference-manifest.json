@@ -1,13 +1,5 @@
 {
   "node": {
-    "3c4f7ea06a1091edaeedd51e616f3780e69177de": {
-      "workers": {
-        "app/customers/add/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22E%3A%5C%5CmyPrograms%5C%5Ccourse_heicoders%5C%5Cse200%5C%5Cse200_capstoneProject%5C%5Capp%5C%5Ccustomers%5C%5Cadd%5C%5Cadd-customer.tsx%22%2C%5B%22default%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/customers/add/page": "action-browser"
-      }
-    },
     "fcf294923969b85b2f4cc3286c47e5337968b80a": {
       "workers": {
         "app/policies/add/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22E%3A%5C%5CmyPrograms%5C%5Ccourse_heicoders%5C%5Cse200%5C%5Cse200_capstoneProject%5C%5Capp%5C%5Cpolicies%5C%5Cadd%5C%5Cadd-policy.tsx%22%2C%5B%22default%22%5D%5D%5D&__client_imported__=true!"
@@ -18,5 +10,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "YHG3TcUtrxvnKz2mJg7L2yNfuz7XA7tncFOi2qj4nis="
+  "encryptionKey": "J1/rjKwzBn/9pZeJf2PXEC+kUYbMaVunhcLkXDRmaR0="
 }

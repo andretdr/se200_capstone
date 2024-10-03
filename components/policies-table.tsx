@@ -73,7 +73,7 @@ export function PoliciesTable({
           <div className="text-xs text-muted-foreground">
             Showing{' '}
             <strong>
-              {Math.min(offset - postsPerPage, totalPosts) + 1}-{offset}
+              {Math.min(offset - postsPerPage, totalPosts) + 1}-{Math.min(offset, totalPosts)}
             </strong>{' '}
             of <strong>{totalPosts}</strong> posts
           </div>
